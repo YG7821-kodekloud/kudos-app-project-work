@@ -1,0 +1,20 @@
+name: CICD Pipeline for the project
+on:  # On what even we want to run this workflow 
+  push 
+jobs:  # What are the jobs we want to run in this workflow
+ buildProject: # name of job
+  runs-on: ubuntu-latest  # we got a VM with ubuntu latest version
+  steps:
+    - name: Checkout the code 
+      uses: actions/checkout@v6  # we are using the checkout action to checkout the code from the repository
+    - name: Install nodejs
+      uses: actions/setup-node@v6
+      with:
+        node-version: '18'  # we are using nodejs version 18
+        cache: npm
+    - name: Install dependencies for the code to run 
+      run: npm ci # we are using npm ci to install the dependencies for the code to run
+    - name: Run tests
+      run: npm test # we are using npm test to run the tests for the code 
+    - name: Build the code
+      run: npm run build # we are using npm run build to build the code
