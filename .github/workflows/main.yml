@@ -18,3 +18,12 @@ jobs:  # What are the jobs we want to run in this workflow
       run: npm test # we are using npm test to run the tests for the code 
     - name: Build the code
       run: npm run build # we are using npm run build to build the code
+    - name: Install docker
+      uses: docker/setup-buildx-action@v4
+    - name: build Image and push to Docker HUB 
+      uses: docker/build-push-action@v6
+      with:
+        context: . # we are using the current directory as the context for the build
+        #push: true # we want to push the image to Docker HUB
+        tags: myprojectkudos01:latest # we are tagging the image with the latest tag and pushing it to Docker HUB
+
