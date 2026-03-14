@@ -1,6 +1,6 @@
 name: CICD Pipeline for the project
 on:  # On what even we want to run this workflow 
-  push 
+  # push 
 jobs:  # What are the jobs we want to run in this workflow
  buildProject: # name of job
   runs-on: ubuntu-latest  # we got a VM with ubuntu latest version
@@ -23,19 +23,19 @@ jobs:  # What are the jobs we want to run in this workflow
     - name: Loginto Docker Hub
       uses: docker/login-action@v3
       with: 
-        username: sonal04
+        username: yg7821
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: build Image and push to Docker HUB 
       uses: docker/build-push-action@v6
       with:
         context: . # we are using the current directory as the context for the build
         push: true # we want to push the image to Docker HUB
-        tags: sonal04/myprojectkudos01:latest # we are tagging the image with the latest tag and pushing it to Docker HUB
+        tags: yg7821/myprojectkudos01:latest # we are tagging the image with the latest tag and pushing it to Docker HUB
     - name: build Backend Image and push to Docker HUB 
       uses: docker/build-push-action@v6
       with:
         context: . # we are using the current directory as the context for the build
         file: ./Dockerfile.backend
         push: true # we want to push the image to Docker HUB
-        tags: sonal04/myprojectkudos02:latest # we are tagging the image with the latest tag and pushing it to Docker HUB
+        tags: yg7821/myprojectkudos02:latest # we are tagging the image with the latest tag and pushing it to Docker HUB
 
