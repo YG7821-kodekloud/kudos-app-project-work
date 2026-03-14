@@ -1,6 +1,6 @@
 name: CICD Pipeline for the project
 on:  # On what even we want to run this workflow 
-  # push 
+  push 
 jobs:  # What are the jobs we want to run in this workflow
  buildProject: # name of job
   runs-on: ubuntu-latest  # we got a VM with ubuntu latest version
